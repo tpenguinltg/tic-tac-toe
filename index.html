@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="./css/main.css" type="text/css" />
+    <script type="text/javascript" src="./js/game.js"></script>
+  </head>
+  <body>
+    <h1>Tic Tac Toe</h1>
+
+    <!-- Controls and Settings -->
+    <div id="controls">
+      <div id="difficulties">
+        <label>X&nbsp;difficulty:
+          <select id="x-difficulty">
+            <option value="0">Easy</option>
+            <option value="1" selected="selected">Reasonable</option>
+            <option value="2">Impossible</option>
+          </select>
+        </label>
+
+        <label>O&nbsp;difficulty:
+          <select id="o-difficulty">
+            <option value="0">Easy</option>
+            <option value="1" selected="selected">Reasonable</option>
+            <option value="2">Impossible</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="new-game">New Game</button>
+    </div>
+
+    <hr />
+
+    <!-- Playing board -->
+    <table id="board">
+      <tbody>
+        <tr>
+          <td id="cell0" class="open">
+            <button id="choose0"></button>
+          </td>
+          <td id="cell1" class="open">
+            <button id="choose1"></button>
+          </td>
+          <td id="cell2" class="open">
+            <button id="choose2"></button>
+          </td>
+        </tr>
+        <tr>
+          <td id="cell3" class="open">
+            <button id="choose3"></button>
+          </td>
+          <td id="cell4" class="open">
+            <button id="choose4"></button>
+          </td>
+          <td id="cell5" class="open">
+            <button id="choose5"></button>
+          </td>
+        </tr>
+        <tr>
+          <td id="cell6" class="open">
+            <button id="choose6"></button>
+          </td>
+          <td id="cell7" class="open">
+            <button id="choose7"></button>
+          </td>
+          <td id="cell8" class="open">
+            <button id="choose8"></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

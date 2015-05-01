@@ -1,0 +1,73 @@
+@keyframes yellow-fade {
+  0% { background-color: #FFFF99; }
+}
+
+body {
+  max-width: 50em;
+  min-width: 15em;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1em;
+}
+
+
+#board {
+  width: 15em;
+  height: 15em;
+  margin: 1em auto;
+
+  table-layout: fixed;
+
+  /* Show only the inner borders */
+  border-collapse: collapse;
+  border-style: hidden;
+
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+#board td {
+  border: 2px solid #333333;
+  text-align: center;
+  vertical-align: middle;
+  height: 33%;
+  padding: 3%;
+  overflow: hidden;
+
+  line-height: 0;
+  letter-spacing: 0;
+  font-size: 4em;
+}
+
+#board button {
+  display: block;
+  border-style: none;
+  background-color: #FFFFFF;
+  height: 100%;
+  width: 100%;
+}
+
+#board button:hover {
+  background-color: #99CCCC;
+}
+
+#board button:focus {
+  background-color: #66CCCC;
+}
+
+.new-move {
+  animation: yellow-fade 3s;
+}
+
+#difficulties {
+  display: inline-block;
+}
+
+#difficulties label {
+  white-space: nowrap;
+  margin-right: 1ex;
+  display: inline-block;
+}
+
+
