@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="./css/main.css" type="text/css" />
-    <script type="text/javascript" src="./js/game.js"></script>
   </head>
   <body>
     <h1>Tic Tac Toe</h1>
@@ -14,17 +13,19 @@
       <div id="difficulties">
         <label>X&nbsp;difficulty:
           <select id="x-difficulty">
-            <option value="0">Easy</option>
-            <option value="1" selected="selected">Reasonable</option>
-            <option value="2">Impossible</option>
+            <option value="0" selected="selected">Human</option>
+            <option value="1">Easy</option>
+            <option value="2">Reasonable</option>
+            <option value="3">Impossible</option>
           </select>
         </label>
 
         <label>O&nbsp;difficulty:
           <select id="o-difficulty">
-            <option value="0">Easy</option>
-            <option value="1" selected="selected">Reasonable</option>
-            <option value="2">Impossible</option>
+            <option value="0">Human</option>
+            <option value="1">Easy</option>
+            <option value="2" selected="selected">Reasonable</option>
+            <option value="3">Impossible</option>
           </select>
         </label>
       </div>
@@ -36,6 +37,7 @@
 
     <!-- Playing board -->
     <table id="board">
+      <caption>X's turn</caption>
       <tbody>
         <tr>
           <td id="cell0" class="open">
@@ -72,5 +74,8 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- Game logic and setup -->
+    <script type="text/javascript" src="./js/game.js"></script>
   </body>
 </html>
