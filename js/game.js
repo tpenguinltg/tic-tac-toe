@@ -41,7 +41,9 @@ var oDFA;
  */
 function newGame()
   {
-  clearTimeout(nextTimeout);
+  //make board active
+  document.getElementById("board").className=
+    document.getElementById("board").className.replace("inactive","");
 
   currentPlayer=X_PLAYER;
   movesLeft=9;
@@ -75,6 +77,7 @@ function newGame()
  */
 function endGame()
   {
+  document.getElementById("board").className+=" inactive";
   allowInput(false);
   }//end endGame
 
@@ -222,7 +225,6 @@ function doMove(e)
   // check for win
   if(win=isWin())
     {
-    //TODO
     highlightWin(currentPlayer, cellIndex, win);
     endGame();
     return;
@@ -344,7 +346,84 @@ function nextMoveEasy(player)
  */
 function nextMoveReasonable(player)
   {
-  ; //TODO
+  // search for a cell that would result in a win
+  for(w in cells)
+    {
+    if(cells[w]) continue;
+
+    var potentialWin=false;
+
+    //check horizontal
+    potentialWin = potentialWin ||
+      cells[Math.floor(w/3)*3 + (w+1)%3] == player &&
+      cells[Math.floor(w/3)*3 + (w+2)%3] == player;
+
+    //check vertical
+    potentialWin = potentialWin || 
+      cells[w%3 + Math.floor(w/3 + 1)%3*3] == player &&
+      cells[w%3 + Math.floor(w/3 + 2)%3*3] == player;
+
+    //if on \ diagonal, check \ diagonal
+    if(w%4 == 0)
+      {
+      potentialWin = potentialWin ||
+        cells[(Math.floor(w/3)+1)%3 + (w+1)%3] == player &&
+        cells[(Math.floor(w/3)+2)%3 + (w+2)%3] == player;
+      }//end if
+
+    //if on / diagonal, check / diagonal
+    if(w%2 == 0 && w%8 != 0)
+      {
+      potentialWin = potentialWin ||
+        cells[(Math.floor(w/3)+1)%3 + (6-w + 1)%3] == player &&
+        cells[(Math.floor(w/3)+2)%3 + (6-w + 2)%3] == player;
+      }//end if
+    
+    if(potentialWin) return w;
+    }//end for w
+
+  // search for a cell that would result in a block
+  for(b in cells)
+    {
+    if(cells[b]) continue;
+
+    var potentialBlock=false;
+
+    //check horizontal
+    potentialBlock = potentialBlock ||
+      cells[Math.floor(b/3)*3 + (b+1)%3] &&
+      cells[Math.floor(b/3)*3 + (b+1)%3] == 
+      cells[Math.floor(b/3)*3 + (b+2)%3];
+
+    //check vertical
+    potentialBlock = potentialBlock || 
+      cells[b%3 + Math.floor(b/3 + 1)%3*3] &&
+      cells[b%3 + Math.floor(b/3 + 1)%3*3] ==
+      cells[b%3 + Math.floor(b/3 + 2)%3*3];
+
+    //if on \ diagonal, check \ diagonal
+    if(b%4 == 0)
+      {
+      potentialBlock = potentialBlock ||
+        cells[(Math.floor(b/3)+1)%3*3 + (b+1)%3] &&
+        cells[(Math.floor(b/3)+1)%3*3 + (b+1)%3] ==
+        cells[(Math.floor(b/3)+2)%3*3 + (b+2)%3];
+      }//end if
+
+    //if on / diagonal, check / diagonal
+    if(b%2 == 0 && b%8 != 0)
+      {
+      potentialBlock = potentialBlock ||
+        cells[(Math.floor(b/3)+1)%3*3 + (6-b + 1)%3] &&
+        cells[(Math.floor(b/3)+1)%3*3 + (6-b + 1)%3] ==
+        cells[(Math.floor(b/3)+2)%3*3 + (6-b + 2)%3];
+      }//end if
+
+    if(potentialBlock) return b;
+    }//end for b
+
+  // if no semi-intelligent moves, return a random cell
+  return nextMoveEasy(player);
   }//end nextMoveReasonable
 
 

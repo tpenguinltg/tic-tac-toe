@@ -76,6 +76,10 @@ body {
   background-color: #66CCCC;
 }
 
+#board.inactive td, #board.inactive button {
+  cursor: default;
+}
+
 .new-move {
   animation: yellow-fade 3s;
 }
