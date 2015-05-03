@@ -11,6 +11,10 @@ body {
   padding: 0 1em;
 }
 
+h1, #controls {
+  text-align: center;
+}
+
 
 #board {
   width: 15em;
