@@ -223,7 +223,6 @@ function doMove(e)
   {
   var win=NO_WIN;
   var cellIndex=this.id.charAt(this.id.length-1);
-  console.log(cellIndex);
 
   //place on the board
   placeChar(currentPlayer, cellIndex);
