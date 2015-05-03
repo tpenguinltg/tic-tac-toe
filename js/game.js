@@ -215,6 +215,7 @@ function doMove(e)
   {
   var win=NO_WIN;
   var cellIndex=this.id.charAt(this.id.length-1);
+  console.log(cellIndex);
 
   //place on the board
   placeChar(currentPlayer, cellIndex);
@@ -276,6 +277,8 @@ function doNextMove(player, difficulty)
     //this will only be executed if the game is a draw
     //because a win will be caught earlier
     document.getElementById("board").caption.innerHTML="Draw.";
+
+    endGame();
 
     return;
     }//end if
@@ -414,9 +417,9 @@ function nextMoveReasonable(player)
     if(b%2 == 0 && b%8 != 0)
       {
       potentialBlock = potentialBlock ||
-        cells[(Math.floor(b/3)+1)%3*3 + (6-b + 1)%3] &&
-        cells[(Math.floor(b/3)+1)%3*3 + (6-b + 1)%3] ==
-        cells[(Math.floor(b/3)+2)%3*3 + (6-b + 2)%3];
+        cells[(Math.floor(b/3)+1)%3*3 + (b%3+3 - 1)%3] &&
+        cells[(Math.floor(b/3)+1)%3*3 + (b%3+3 - 1)%3] ==
+        cells[(Math.floor(b/3)+2)%3*3 + (b%3+3 - 2)%3];
       }//end if
 
     if(potentialBlock) return b;
