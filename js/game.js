@@ -23,6 +23,14 @@ var board=document.getElementById("board").getElementsByTagName("td");
 // board to keep track of occupancy internally
 var cells=new Array(9);
 
+/* The board is numbered as follows:
+ *
+ *   012
+ *   345
+ *   678
+ *
+ */
+
 var currentPlayer=X_PLAYER;
 var x_difficulty=HUMAN;
 var o_difficulty=REASONABLE;
