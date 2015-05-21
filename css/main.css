@@ -9,6 +9,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding: 0 1em;
+
+  font-family: sans-serif;
 }
 
 h1, #controls {
@@ -50,7 +52,6 @@ h1, #controls {
 
   cursor: not-allowed;
 
-  font-family: sans-serif;
   font-weight: bold;
 }
 
