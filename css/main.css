@@ -70,7 +70,7 @@ h1, #controls {
 }
 
 #board button:hover {
-  background-color: #99CCCC;
+  background-color: #99CCFF;
 }
 
 #board button:disabled {
@@ -78,7 +78,7 @@ h1, #controls {
 }
 
 #board button:focus {
-  background-color: #66CCCC;
+  background-color: #66CCFF;
 }
 
 #board.inactive td, #board.inactive button {
