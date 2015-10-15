@@ -382,16 +382,16 @@ function nextMoveReasonable(player)
     if(w%4 == 0)
       {
       potentialWin = potentialWin ||
-        cells[(Math.floor(w/3)+1)%3 + (w+1)%3] == player &&
-        cells[(Math.floor(w/3)+2)%3 + (w+2)%3] == player;
+        cells[Math.floor(w/3 + 1)%3*3 + (w+1)%3] == player &&
+        cells[Math.floor(w/3 + 2)%3*3 + (w+2)%3] == player;
       }//end if
 
     //if on / diagonal, check / diagonal
     if(w%2 == 0 && w%8 != 0)
       {
       potentialWin = potentialWin ||
-        cells[(Math.floor(w/3)+1)%3 + (6-w + 1)%3] == player &&
-        cells[(Math.floor(w/3)+2)%3 + (6-w + 2)%3] == player;
+        cells[Math.floor(w/3 + 1)%3*3 + 2-(2-w%3 + 1)%3] == player &&
+        cells[Math.floor(w/3 + 2)%3*3 + 2-(2-w%3 + 2)%3] == player;
       }//end if
     
     if(potentialWin) return w;
@@ -420,18 +420,18 @@ function nextMoveReasonable(player)
     if(b%4 == 0)
       {
       potentialBlock = potentialBlock ||
-        cells[(Math.floor(b/3)+1)%3*3 + (b+1)%3] &&
-        cells[(Math.floor(b/3)+1)%3*3 + (b+1)%3] ==
-        cells[(Math.floor(b/3)+2)%3*3 + (b+2)%3];
+        cells[Math.floor(b/3 + 1)%3*3 + (b+1)%3] &&
+        cells[Math.floor(b/3 + 1)%3*3 + (b+1)%3] ==
+        cells[Math.floor(b/3 + 2)%3*3 + (b+2)%3];
       }//end if
 
     //if on / diagonal, check / diagonal
     if(b%2 == 0 && b%8 != 0)
       {
       potentialBlock = potentialBlock ||
-        cells[(Math.floor(b/3)+1)%3*3 + (b%3+3 - 1)%3] &&
-        cells[(Math.floor(b/3)+1)%3*3 + (b%3+3 - 1)%3] ==
-        cells[(Math.floor(b/3)+2)%3*3 + (b%3+3 - 2)%3];
+        cells[Math.floor(b/3 + 1)%3*3 + 2-(2-b%3 + 1)%3] &&
+        cells[Math.floor(b/3 + 1)%3*3 + 2-(2-b%3 + 1)%3] ==
+        cells[Math.floor(b/3 + 2)%3*3 + 2-(2-b%3 + 2)%3];
       }//end if
 
     if(potentialBlock) return b;
