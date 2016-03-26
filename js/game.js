@@ -17,6 +17,8 @@ V_WIN=2;
 LD_WIN=3; // 0-8 diagonal
 RD_WIN=4; // 6-2 diagonal
 
+COMPUTER_DELAY=800
+
 // board as shown to the user
 var board=document.getElementById("board").getElementsByTagName("td");
 
@@ -35,7 +37,7 @@ var currentPlayer=X_PLAYER;
 var x_difficulty=HUMAN;
 var o_difficulty=REASONABLE;
 var movesLeft=9;
-var nextTimeout;
+var nextTimeout=COMPUTER_DELAY;
 var lastMove=-1;
 
 // DFAs for IMPOSSIBLE difficulty
@@ -58,6 +60,8 @@ function newGame()
 
   x_difficulty=parseInt(document.getElementById("x-difficulty").value);
   o_difficulty=parseInt(document.getElementById("o-difficulty").value);
+
+  updateDelay();
 
   // data from xkcd #832 <https://www.xkcd.com/832/>
   xDFA=(x_difficulty != IMPOSSIBLE)?
@@ -195,6 +199,13 @@ function allowInput(inputAllowed)
     }//end for b
   }//end allowInput
 
+/**
+ * Updates the computer delay
+ */
+function updateDelay()
+  {
+  nextTimeout=(document.getElementById("cpu-delay").checked)? COMPUTER_DELAY:0;
+  }//end updateDelay
 
 /**
  * Gets the mark for the given player
@@ -300,7 +311,12 @@ function doNextMove(player, difficulty)
 
   if(difficulty != HUMAN)
     {
-    document.getElementById("choose"+nextMove(player, difficulty)).click();
+    allowInput(false);
+    setTimeout(function()
+      {
+      allowInput(true);
+      document.getElementById("choose"+nextMove(player, difficulty)).click()
+      }, nextTimeout);
     }//end if
   }//end doNextMove
 
@@ -453,4 +469,5 @@ function nextMoveImpossible(player)
   }//end nextMoveImpossible
 
 
+document.getElementById("cpu-delay").onclick=updateDelay;
 newGame();
