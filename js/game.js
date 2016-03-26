@@ -272,7 +272,7 @@ function placeChar(player, cellIndex)
   board[cellIndex].className="taken "+((player == X_PLAYER)? 'x':'o')+"-move new-move";
 
   // remove new-move class after 3 seconds
-  setTimeout('board['+cellIndex+'].className=board['+cellIndex+'].className.replace("new-move","");', 3000);
+  setTimeout(function() { board[cellIndex].className=board[cellIndex].className.replace("new-move","") }, 3000);
   }//end placeChar
 
 
